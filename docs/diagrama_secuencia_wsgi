@@ -1,0 +1,11 @@
+@startuml
+actor "Cliente" as Cliente
+participant "Servidor Web" as WebServer
+participant "Aplicación WSGI" as WSGIApp
+
+Cliente -> WebServer: Solicitud HTTP
+WebServer -> WSGIApp: Llama al handler WSGI (environ, start_response)
+WSGIApp -> WSGIApp: Procesa la solicitud
+WSGIApp -> WebServer: Retorna respuesta HTTP (start_response + cuerpo)
+WebServer -> Cliente: Respuesta HTTP
+@enduml
