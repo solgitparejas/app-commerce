@@ -13,7 +13,7 @@ producto_schema = ProductoSchema()
 
 
 @home.route('/commerce/comprar', methods=['POST'])
-@limiter.limit(limit_value="5 per second", key_func=get_remote_address)
+@limiter.limit(limit_value="60 per second", key_func=get_remote_address)
 def index():
     commerce = CommerceService()
     carrito = carrito_schema.load(request.get_json())
